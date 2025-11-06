@@ -24,7 +24,18 @@ configMapGenerator:
   - name: back-end-app-cm
     env: config.properties
  
-secretGenerator:
-  - name: back-end-app-secret
-    env: secret.properties
+# secretGenerator:
+#   - name: back-end-app-secret
+#     env: secret.properties
+
+patches:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: myproject-backend-deploy
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/envFrom/1/secretRef/name
+        value: myproject-backend-secret-staging
  
