@@ -37,5 +37,5 @@ patches:
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/envFrom/1/secretRef/name
-        value: myproject-backend-secret-staging
+        value: back-end-app-secret-staging
  
