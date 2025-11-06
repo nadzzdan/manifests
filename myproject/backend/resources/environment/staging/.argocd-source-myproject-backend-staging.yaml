@@ -1,0 +1,3 @@
+kustomize:
+  images:
+  - ghcr.io/nadzzdan/back-end:v0.1.1-alpha
