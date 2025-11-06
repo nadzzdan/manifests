@@ -1,0 +1,30 @@
+resources:
+  - ../../base/
+
+namespace: three-tier-app
+
+nameSuffix: -staging
+
+
+labels:
+  - includeSelectors: true
+    includeTemplates: true
+    pairs:
+      app.kubernetes.io/part-of: "back-end-app-staging"
+ 
+images:
+  - name: ghcr.io/nadzzdan/back-end
+    newTag: v0.1.0-alpha
+ 
+replicas:
+  - name: back-end-deployment
+    count: 2
+ 
+configMapGenerator:
+  - name: back-end-app-cm
+    env: config.properties
+ 
+secretGenerator:
+  - name: back-end-app-secret
+    env: secret.properties
+ 

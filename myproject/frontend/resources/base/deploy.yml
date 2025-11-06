@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-end-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {}
+  template:
+    metadata:
+      labels: {}
+    spec:
+      containers:
+        - name: front-end
+          image: ghcr.io/nadzzdan/front-end:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: front-end-app-cm
+            # - secretRef:
+            #     name: front-end-app-secret
+      imagePullSecrets:
+        - name: github-container-registry
+ 
+

@@ -1,0 +1,30 @@
+resources:
+  - ../../base/
+
+namespace: three-tier-app
+
+nameSuffix: -staging
+
+
+labels:
+  - includeSelectors: true
+    includeTemplates: true
+    pairs:
+      app.kubernetes.io/part-of: "front-end-app-staging"
+ 
+images:
+  - name: ghcr.io/nadzzdan/front-end
+    newTag: v0.1.6-alpha
+ 
+replicas:
+  - name: front-end-deployment
+    count: 1
+ 
+configMapGenerator:
+  - name: front-end-app-cm
+    env: config.properties
+ 
+# secretGenerator:
+#   - name: front-end-app-secret
+#     env: secret.properties
+ 

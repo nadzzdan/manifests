@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back-end-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {}
+  template:
+    metadata:
+      labels: {}
+    spec:
+      containers:
+        - name: back-end
+          image: ghcr.io/nadzzdan/back-end:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: back-end-app-cm
+            - secretRef:
+                name: back-end-app-secret
+      imagePullSecrets:
+        - name: github-container-registry
+ 
+
