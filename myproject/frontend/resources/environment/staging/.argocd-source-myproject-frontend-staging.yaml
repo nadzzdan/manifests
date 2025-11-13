@@ -1,0 +1,3 @@
+kustomize:
+  images:
+  - ghcr.io/nadzzdan/front-end:v0.1.7-alpha
