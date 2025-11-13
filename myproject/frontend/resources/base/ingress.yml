@@ -15,3 +15,7 @@ spec:
             name: front-end-service
             port:
               number: 80
+  tls:
+  - hosts:
+    - frontend.local-staging
+    secretName: frontend-tls
